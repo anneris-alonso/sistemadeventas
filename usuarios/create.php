@@ -1,18 +1,21 @@
 <?php
-include ('../app/config.php');
-include ('../layout/sesion.php');
+include('../app/config.php');
+include('../layout/sesion.php');
 
-include ('../layout/parte1.php');
+include('../layout/parte1.php');
 
-include ('../app/controllers/roles/listado_de_roles.php');?>
+include('../app/controllers/roles/listado_de_roles.php'); ?>
 
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Registro de un nuevo empleado</h1>
-                </div></div></div></div>
+                    <h1 class="m-0"><?php echo __('new_employee_registration'); ?></h1>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="content">
         <div class="container-fluid">
 
@@ -20,9 +23,10 @@ include ('../app/controllers/roles/listado_de_roles.php');?>
                 <div class="col-md-5">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Llene los datos con cuidado</h3>
+                            <h3 class="card-title"><?php echo __('fill_data_carefully'); ?></h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                        class="fas fa-minus"></i>
                                 </button>
                             </div>
 
@@ -33,51 +37,56 @@ include ('../app/controllers/roles/listado_de_roles.php');?>
                                 <div class="col-md-12">
                                     <form action="../app/controllers/usuarios/create.php" method="post">
                                         <div class="form-group">
-                                            <label for="">Nombres</label>
-                                            <input type="text" name="nombres" class="form-control" placeholder="Escriba aquí el nombre del nuevo usuario..." required>
+                                            <label for=""><?php echo __('names'); ?></label>
+                                            <input type="text" name="nombres" class="form-control"
+                                                placeholder="<?php echo __('names'); ?>..." required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Email</label>
-                                            <input type="email" name="email" class="form-control" placeholder="Escriba aquí el correo del nuevo usuario..." required>
+                                            <label for=""><?php echo __('email'); ?></label>
+                                            <input type="email" name="email" class="form-control"
+                                                placeholder="<?php echo __('email'); ?>..." required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Rol del empleado</label>
+                                            <label for=""><?php echo __('user_role'); ?></label>
                                             <select name="rol" id="" class="form-control">
                                                 <?php
-                                                foreach ($roles_datos as $roles_dato){?>
-                                                    <option value="<?php echo $roles_dato['id_rol'];?>"><?php echo $roles_dato['rol'];?></option>
-                                                <?php
+                                                foreach ($roles_datos as $roles_dato) { ?>
+                                                    <option value="<?php echo $roles_dato['id_rol']; ?>">
+                                                        <?php echo $roles_dato['rol']; ?></option>
+                                                    <?php
                                                 }
-                                              ?>
+                                                ?>
                                             </select>
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Contraseña</label>
+                                            <label for=""><?php echo __('password'); ?></label>
                                             <input type="text" name="password_user" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Repita la Contraseña</label>
+                                            <label for=""><?php echo __('repeat_password'); ?></label>
                                             <input type="text" name="password_repeat" class="form-control" required>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="salario">Salario:</label>
-                                            <input type="number" name="salario" id="salario" step="0.01" required><br><br>
+                                            <label for="salario"><?php echo __('salary'); ?>:</label>
+                                            <input type="number" name="salario" id="salario" step="0.01"
+                                                required><br><br>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="num_permiso_trabajo">Número de permiso de trabajo:</label>
-                                            <input type="text" name="num_permiso_trabajo" id="num_permiso_trabajo"><br><br>
+                                            <label for="num_permiso_trabajo"><?php echo __('work_permit'); ?>:</label>
+                                            <input type="text" name="num_permiso_trabajo"
+                                                id="num_permiso_trabajo"><br><br>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="seguro_medico">Seguro médico:</label>
+                                            <label for="seguro_medico"><?php echo __('health_insurance'); ?>:</label>
                                             <input type="text" name="seguro_medico" id="seguro_medico"><br><br>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="tipo_empleado">Tipo de empleado:</label>
+                                            <label for="tipo_empleado"><?php echo __('employee_type'); ?>:</label>
                                             <select name="tipo_empleado" id="tipo_empleado">
                                                 <option value="Part-Time">Part-Time</option>
                                                 <option value="Full-Time">Full-Time</option>
@@ -87,8 +96,10 @@ include ('../app/controllers/roles/listado_de_roles.php');?>
 
                                         <hr>
                                         <div class="form-group">
-                                            <a href="index.php" class="btn btn-secondary">Cancelar</a>
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                            <a href="index.php"
+                                                class="btn btn-secondary"><?php echo __('cancel'); ?></a>
+                                            <button type="submit"
+                                                class="btn btn-primary"><?php echo __('save'); ?></button>
                                         </div>
                                     </form>
                                 </div>
@@ -99,6 +110,7 @@ include ('../app/controllers/roles/listado_de_roles.php');?>
                 </div>
             </div>
 
-            </div></div>
+        </div>
     </div>
-<?php include ('../layout/parte2.php');?>
+</div>
+<?php include('../layout/parte2.php'); ?>

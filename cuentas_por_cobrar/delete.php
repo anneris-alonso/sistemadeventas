@@ -5,9 +5,9 @@ include('../layout/sesion.php');
 include('../layout/parte1.php');
 
 // Check if id_cuenta is received
-if(!isset($_GET['id_cuenta'])){
+if (!isset($_GET['id_cuenta'])) {
     session_start();
-    $_SESSION['mensaje'] = "No se recibio el ID de la cuenta.";
+    $_SESSION['mensaje'] = "<?php echo __('error_no_account_id'); ?>";
     $_SESSION['icono'] = "error";
     ?>
     <script>
@@ -28,7 +28,7 @@ if (session_status() == PHP_SESSION_NONE) {
 // Check if negocio_id is set and is numeric
 if (!isset($_SESSION['negocio_id']) || !is_numeric($_SESSION['negocio_id'])) {
     session_start();
-    $_SESSION['mensaje'] = "Error: ID de negocio inválido.";
+    $_SESSION['mensaje'] = "<?php echo __('error_invalid_business_id'); ?>";
     $_SESSION['icono'] = "error";
     ?>
     <script>
@@ -57,7 +57,7 @@ try {
 
         // Set success message
         session_start();
-        $_SESSION['mensaje'] = "Se eliminó la cuenta por cobrar correctamente.";
+        $_SESSION['mensaje'] = "<?php echo __('account_deleted_successfully'); ?>";
         $_SESSION['icono'] = "success";
         ?>
         <script>
@@ -70,7 +70,7 @@ try {
 
         // Set error message
         session_start();
-        $_SESSION['mensaje'] = "Error: No se pudo eliminar la cuenta en la base de datos.";
+        $_SESSION['mensaje'] = "<?php echo __('error_deleting_account_db'); ?>";
         $_SESSION['icono'] = "error";
         ?>
         <script>
@@ -87,7 +87,7 @@ try {
 
     // Set error message
     session_start();
-    $_SESSION['mensaje'] = "Error: Ocurrió un error al eliminar la cuenta.";
+    $_SESSION['mensaje'] = "<?php echo __('error_deleting_account_generic'); ?>";
     $_SESSION['icono'] = "error";
     ?>
     <script>

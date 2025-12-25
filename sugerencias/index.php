@@ -1,10 +1,10 @@
 <?php
-include ('../app/config.php');
-include ('../layout/sesion.php');
-include ('../layout/parte1.php');
+include('../app/config.php');
+include('../layout/sesion.php');
+include('../layout/parte1.php');
 
 // Incluir el controlador para el listado de sugerencias
-include ('../app/controllers/sugerencias/listado_de_sugerencias.php'); 
+include('../app/controllers/sugerencias/listado_de_sugerencias.php');
 ?>
 
 <div class="content-wrapper">
@@ -12,9 +12,9 @@ include ('../app/controllers/sugerencias/listado_de_sugerencias.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Listado de Sugerencias
+                    <h1 class="m-0"><?php echo __('suggestions_list'); ?>
                         <a href="create.php" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> Agregar Nueva
+                            <i class="fa fa-plus"></i> <?php echo __('add_new'); ?>
                         </a>
                     </h1>
                 </div>
@@ -25,23 +25,24 @@ include ('../app/controllers/sugerencias/listado_de_sugerencias.php');
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12"> 
+                <div class="col-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Sugerencias registradas</h3>
+                            <h3 class="card-title"><?php echo __('registered_suggestions'); ?></h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                        class="fas fa-minus"></i>
                                 </button>
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <div class="table-responsive"> 
-                                <table id="example1" class="table table-bordered table-striped table-sm"> 
+                            <div class="table-responsive">
+                                <table id="example1" class="table table-bordered table-striped table-sm">
                                     <thead>
                                         <tr>
-                                            <th>Nro</th>
-                                            <th>Sugerencia</th>
+                                            <th><?php echo __('number'); ?></th>
+                                            <th><?php echo __('suggestion'); ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -54,7 +55,7 @@ include ('../app/controllers/sugerencias/listado_de_sugerencias.php');
                                             <tr>
                                                 <td><?php echo ++$contador; ?></td>
                                                 <td><?php echo $sugerencia; ?></td>
-                                                
+
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -70,4 +71,3 @@ include ('../app/controllers/sugerencias/listado_de_sugerencias.php');
 
 <?php include('../layout/mensajes.php'); ?>
 <?php include('../layout/parte2.php'); ?>
-

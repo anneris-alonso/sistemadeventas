@@ -26,7 +26,7 @@ try {
         $impuesto = $servicio_data['impuesto'];
         $precio_final = $servicio_data['precio_final'];
         $ganancias = $servicio_data['ganancias'];
-        
+
     } else {
         die("Servicio no encontrado para este negocio.");
     }
@@ -41,7 +41,7 @@ try {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Actualización de Servicios
+                    <h1 class="m-0"><?php echo __('update_services'); ?>
                     </h1>
                 </div>
             </div>
@@ -54,63 +54,85 @@ try {
                 <div class="col-md-6">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Actualice los datos con cuidado</h3>
+                            <h3 class="card-title"><?php echo __('update_data_carefully'); ?></h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <form action="../app/controllers/servicios/update_servicios.php" method="post">
-                                        <input type="hidden" name="id_servicio" value="<?php echo $id_servicio; ?>"> </input>
-                                        <input type="hidden" name="id_negocios" value="<?= $_SESSION['negocio_id'] ?>"> </input>
+                                        <input type="hidden" name="id_servicio" value="<?php echo $id_servicio; ?>">
+                                        </input>
+                                        <input type="hidden" name="id_negocios" value="<?= $_SESSION['negocio_id'] ?>">
+                                        </input>
 
-                                        <div class="form-group"> 
-                                            <label for="">Nombre del servicio <b>*</b></label>
-                                            <input type="text" name="servicio" value="<?php echo $servicio; ?>" class="form-control" required> </input>
+                                        <div class="form-group">
+                                            <label for=""><?php echo __('service_name'); ?> <b>*</b></label>
+                                            <input type="text" name="servicio" value="<?php echo $servicio; ?>"
+                                                class="form-control" required> </input>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Tipo de servicio <b>*</b></label>
-                                            <input type="text" name="tipo" value="<?php echo $tipo; ?>" class="form-control" required> </input>
-                                        </div>
-                                        <div class="form-group"> 
-                                            <label for="">Precio de compra <b>*</b></label>
-                                            <input type="text" name="precio_de_compra" value="<?php echo $precio_de_compra; ?>" class="form-control" required> </input>
-                                        </div>
-                                        <div class="form-group"> 
-                                            <label for="">Precio del servicio <b>*</b></label>
-                                            <input type="text" name="precio_serv" value="<?php echo $precio_serv; ?>" class="form-control" required> </input>
-                                        </div>
-                                        <div class="form-group"> 
-                                            <label for="">Duracion del servicio <b>*</b></label>
-                                            <input type="text" name="duracion" value="<?php echo $duracion; ?>" class="form-control"> </input>
+                                            <label for=""><?php echo __('service_type'); ?> <b>*</b></label>
+                                            <input type="text" name="tipo" value="<?php echo $tipo; ?>"
+                                                class="form-control" required> </input>
                                         </div>
                                         <div class="form-group">
-                                              <label for="">Impuesto (%) <b>*</b></label>
-                                              <input type="number" step="0.01" name="impuesto" value="<?php echo $impuesto; ?>" class="form-control" required>
-                                         </div>
-                                         <div class="form-group">
-                                              <label for="">Precio Final</label>
-                                              <input type="text" name="precio_final" value="<?php echo $precio_final; ?>" class="form-control" readonly>
-                                          </div>
-                                        <div class="form-group">
-                                        <div class="form-group">
-                                              <label for="">Ganancias</label>
-                                              <input type="text" name="ganancias" value="<?php echo $ganancias; ?>" class="form-control" readonly>
-                                          </div>
-                                        <div class="form-group">
-                                          <a href="index.php" class="btn btn-secondary">Cancelar</a>
-                                          <button type="submit" class="btn btn-primary">Guardar</button>
+                                            <label for=""><?php echo __('purchase_price'); ?> <b>*</b></label>
+                                            <input type="text" name="precio_de_compra"
+                                                value="<?php echo $precio_de_compra; ?>" class="form-control" required>
+                                            </input>
                                         </div>
+                                        <div class="form-group">
+                                            <label for=""><?php echo __('service_price'); ?> <b>*</b></label>
+                                            <input type="text" name="precio_serv" value="<?php echo $precio_serv; ?>"
+                                                class="form-control" required> </input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><?php echo __('service_duration'); ?> <b>*</b></label>
+                                            <input type="text" name="duracion" value="<?php echo $duracion; ?>"
+                                                class="form-control"> </input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><?php echo __('tax'); ?> <b>*</b></label>
+                                            <input type="number" step="0.01" name="impuesto"
+                                                value="<?php echo $impuesto; ?>" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><?php echo __('final_price'); ?></label>
+                                            <input type="text" name="precio_final" value="<?php echo $precio_final; ?>"
+                                                class="form-control" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for=""><?php echo __('profits'); ?></label>
+                                                <input type="text" name="ganancias" value="<?php echo $ganancias; ?>"
+                                                    class="form-control" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <a href="index.php"
+                                                    class="btn btn-secondary"><?php echo __('cancel'); ?></a>
+                                                <button type="submit"
+                                                    class="btn btn-primary"><?php echo __('save'); ?></button>
+                                            </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> </div>  </div> </div>  </div> </div> </div> <div class="col-md-12">  </div> </div> </div>
+            </div>
         </div>
     </div>
 </div>
+</div>
+</div>
+</div>
+<div class="col-md-12"> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-<?php include ('../layout/mensajes.php'); ?>
-<?php include ('../layout/parte2.php'); ?>
+<?php include('../layout/mensajes.php'); ?>
+<?php include('../layout/parte2.php'); ?>

@@ -13,7 +13,7 @@ include('../app/controllers/proveedores/listado_de_proveedores.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Crear nueva cuenta por pagar</h1>
+                    <h1 class="m-0"><?php echo __('create_new_account_payable'); ?></h1>
                 </div>
             </div>
         </div>
@@ -25,57 +25,63 @@ include('../app/controllers/proveedores/listado_de_proveedores.php');
                 <div class="col-md-5">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Llene los datos con cuidado</h3>
+                            <h3 class="card-title"><?php echo __('fill_data_carefully'); ?></h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                        class="fas fa-minus"></i></button>
                             </div>
                         </div>
                         <div class="card-body">
                             <form action="../app/controllers/cuentas_por_pagar/create.php" method="post">
                                 <div class="form-group">
-                                    <label for="id_proveedor">Proveedor:</label>
+                                    <label for="id_proveedor"><?php echo __('provider'); ?>:</label>
                                     <select name="id_proveedor" id="id_proveedor" class="form-control" required>
-                                        <option value="">Seleccione un proveedor</option>
-                                        <?php foreach ($proveedores_datos as $proveedor):?>
-                                            <option value="<?= $proveedor['id_proveedor']?>">
-                                                <?= $proveedor['nombre_proveedor']?>
+                                        <option value=""><?php echo __('select_provider'); ?></option>
+                                        <?php foreach ($proveedores_datos as $proveedor): ?>
+                                            <option value="<?= $proveedor['id_proveedor'] ?>">
+                                                <?= $proveedor['nombre_proveedor'] ?>
                                             </option>
-                                        <?php endforeach;?>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="numero_factura">Numero de factura:</label>
-                                    <input type="text" name="numero_factura" id="numero_factura" class="form-control" required>
+                                    <label for="numero_factura"><?php echo __('invoice_number'); ?>:</label>
+                                    <input type="text" name="numero_factura" id="numero_factura" class="form-control"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha_emision">Fecha de emision:</label>
-                                    <input type="date" name="fecha_emision" id="fecha_emision" class="form-control" required>
+                                    <label for="fecha_emision"><?php echo __('issue_date'); ?>:</label>
+                                    <input type="date" name="fecha_emision" id="fecha_emision" class="form-control"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha_vencimiento">Fecha de vencimiento:</label>
-                                    <input type="date" name="fecha_vencimiento" id="fecha_vencimiento" class="form-control" required>
+                                    <label for="fecha_vencimiento"><?php echo __('due_date'); ?>:</label>
+                                    <input type="date" name="fecha_vencimiento" id="fecha_vencimiento"
+                                        class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="monto_total">Monto total:</label>
-                                    <input type="number" name="monto_total" id="monto_total" step="0.01" class="form-control" required>
+                                    <label for="monto_total"><?php echo __('total_amount'); ?>:</label>
+                                    <input type="number" name="monto_total" id="monto_total" step="0.01"
+                                        class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="saldo_pendiente">Saldo pendiente:</label>
-                                    <input type="number" name="saldo_pendiente" id="saldo_pendiente" step="0.01" class="form-control" required>
+                                    <label for="saldo_pendiente"><?php echo __('pending_balance'); ?>:</label>
+                                    <input type="number" name="saldo_pendiente" id="saldo_pendiente" step="0.01"
+                                        class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="estado">Estado:</label>
+                                    <label for="estado"><?php echo __('status'); ?>:</label>
                                     <select name="estado" id="estado" class="form-control" required>
-                                        <option value="pendiente">Pendiente</option>
-                                        <option value="parcialmente pagado">Parcialmente Pagado</option>
-                                        <option value="pagado">Pagado</option>
+                                        <option value="pendiente"><?php echo __('pending'); ?></option>
+                                        <option value="parcialmente pagado"><?php echo __('partially_paid'); ?></option>
+                                        <option value="pagado"><?php echo __('paid'); ?></option>
                                     </select>
                                 </div>
 
                                 <hr>
                                 <div class="form-group">
-                                    <a href="index.php" class="btn btn-secondary">Cancelar</a>
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <a href="index.php" class="btn btn-secondary"><?php echo __('cancel'); ?></a>
+                                    <button type="submit" class="btn btn-primary"><?php echo __('save'); ?></button>
                                 </div>
                             </form>
                         </div>

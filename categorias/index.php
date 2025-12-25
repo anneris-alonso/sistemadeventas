@@ -8,7 +8,7 @@ include('../app/controllers/categorias/listado_de_categoria.php');
         <div class="col-sm-12">
             <!-- Button to Open the Add New Category Modal -->
             <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#addCategoryModal">
-                <i class="fa fa-plus"></i> Agregar Nueva Categoría
+                <i class="fa fa-plus"></i> <?php echo __('add_new_category'); ?>
             </button>
         </div>
     </div>
@@ -17,7 +17,7 @@ include('../app/controllers/categorias/listado_de_categoria.php');
             <div class="col-12">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Categorías Registradas</h3>
+                        <h3 class="card-title"><?php echo __('registered_categories'); ?></h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -29,9 +29,9 @@ include('../app/controllers/categorias/listado_de_categoria.php');
                         <table id="table_categorias" class="table table-hover text-nowrap table-sm">
                             <thead>
                                 <tr>
-                                    <th>Nro</th>
-                                    <th>Nombre de la categoría</th>
-                                    <th>Acciones</th>
+                                    <th><?php echo __('number'); ?></th>
+                                    <th><?php echo __('category_name'); ?></th>
+                                    <th><?php echo __('actions'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,16 +40,20 @@ include('../app/controllers/categorias/listado_de_categoria.php');
                                 foreach ($categorias_datos as $categoria_dato) {
                                     $id_categoria = $categoria_dato['id_categoria'];
                                     $nombre_categoria = $categoria_dato['nombre_categoria'];
-                                ?>
+                                    ?>
                                     <tr>
                                         <td><?php echo ++$contador; ?></td>
                                         <td><?php echo $nombre_categoria; ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="update.php?id=<?php echo $id_categoria; ?>" class="btn btn-success btn-sm" title="Editar Categoría" target="_blank">
-                                                <i class="fas fa-pencil-alt"></i>
+                                                <a href="update.php?id=<?php echo $id_categoria; ?>"
+                                                    class="btn btn-success btn-sm"
+                                                    title="<?php echo __('edit_category'); ?>" target="_blank">
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="delete.php?id=<?php echo $id_categoria; ?>" class="btn btn-danger btn-sm" title="Eliminar Categoría" target="_blank">
+                                                <a href="delete.php?id=<?php echo $id_categoria; ?>"
+                                                    class="btn btn-danger btn-sm"
+                                                    title="<?php echo __('delete_category'); ?>" target="_blank">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </div>
@@ -66,11 +70,12 @@ include('../app/controllers/categorias/listado_de_categoria.php');
 </div>
 
 <!-- Add New Category Modal (Nested) -->
-<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addCategoryModalLabel">Agregar Nueva Categoría</h5>
+                <h5 class="modal-title" id="addCategoryModalLabel"><?php echo __('add_new_category'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -82,31 +87,31 @@ include('../app/controllers/categorias/listado_de_categoria.php');
     </div>
 </div>
 <script>
-   $(document).ready(function() {
-    $('#table_categorias').DataTable({
-        "pageLength": 5,
-        "language": {
-            "emptyTable": "No hay información",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ Categorías",
-            "infoEmpty": "Mostrando 0 a 0 de 0 Categorías",
-            "infoFiltered": "(Filtrado de _MAX_ total Categorías)",
-            "infoPostFix": "",
-            "thousands": ",",
-            "lengthMenu": "Mostrar _MENU_ Categorías",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Buscador:",
-            "zeroRecords": "Sin resultados encontrados",
-            "paginate": {
-                "first": "Primero",
-                "last": "Ultimo",
-                "next": "Siguiente",
-                "previous": "Anterior"
-            }
-        },
-        "responsive": true,
-        "lengthChange": true,
-        "autoWidth": false,
+    $(document).ready(function () {
+        $('#table_categorias').DataTable({
+            "pageLength": 5,
+            "language": {
+                "emptyTable": "<?php echo __('no_data_available'); ?>",
+                "info": "<?php echo __('showing'); ?> _START_ <?php echo __('to'); ?> _END_ <?php echo __('of'); ?> _TOTAL_ <?php echo __('categories'); ?>",
+                "infoEmpty": "<?php echo __('showing_0_to_0_of_0'); ?>",
+                "infoFiltered": "(<?php echo __('filtered_from'); ?> _MAX_ <?php echo __('categories'); ?>)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "<?php echo __('show'); ?> _MENU_ <?php echo __('categories'); ?>",
+                "loadingRecords": "<?php echo __('loading'); ?>...",
+                "processing": "<?php echo __('processing'); ?>...",
+                "search": "<?php echo __('search'); ?>:",
+                "zeroRecords": "<?php echo __('no_results_found'); ?>",
+                "paginate": {
+                    "first": "<?php echo __('first'); ?>",
+                    "last": "<?php echo __('last'); ?>",
+                    "next": "<?php echo __('next'); ?>",
+                    "previous": "<?php echo __('previous'); ?>"
+                }
+            },
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
+        });
     });
-});
 </script>

@@ -39,13 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
     // validate and sanitize data from the FORM.
     $id_producto = filter_input(INPUT_POST, 'id_producto', FILTER_VALIDATE_INT);
     if ($id_producto === false || $id_producto === null) {
-        $errors[] = "Invalid product ID.";
+        $errors[] = __("error_invalid_product_id");
         error_log("Invalid product ID: " . var_export($_POST['id_producto'], true));
     }
 
     $motivo_baja = filter_input(INPUT_POST, 'motivo_baja', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if (empty($motivo_baja)) {
-        $errors[] = "Reason for loss is required.";
+        $errors[] = __("reason_for_loss_required");
         error_log("Missing motivo_baja");
     }
 
@@ -54,14 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         $fecha_baja_obj = new DateTime($fecha_baja);
         $fecha_baja_formatted = $fecha_baja_obj->format('Y-m-d');
     } catch (Exception $e) {
-        $errors[] = "Invalid loss date.";
+        $errors[] = __("invalid_loss_date");
         error_log("Invalid date format: " . var_export($fecha_baja, true));
         $fecha_baja_formatted = null;
     }
 
     $cantidad = filter_input(INPUT_POST, 'cantidad', FILTER_VALIDATE_INT);
     if ($cantidad === false || $cantidad === null || $cantidad < 1) {
-        $errors[] = "Invalid quantity.";
+        $errors[] = __("invalid_quantity");
         error_log("Invalid quantity: " . var_export($_POST['cantidad'], true));
     }
 
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         try {
             $pdo->beginTransaction(); // Start transaction
 
-              // --- Check Available Stock ---
+            // --- Check Available Stock ---
             $stock_stmt = $pdo->prepare("SELECT stock FROM tb_almacen WHERE id_producto = :id_producto AND id_negocios = :id_negocios");
             $stock_stmt->bindParam(':id_producto', $id_producto, PDO::PARAM_INT);
             //Bind param id_negocios: If id_negocios is null, this query will return 0 results.
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
                 if ($id_negocios !== null) {
                     $update_stmt->bindParam(':id_negocios', $id_negocios, PDO::PARAM_INT);
                 } else {
-                     // CRITICAL: Decide how to handle this. Throwing exception.
+                    // CRITICAL: Decide how to handle this. Throwing exception.
                     error_log("id_negocios is NULL in stock update. Preventing query execution.");
                     throw new Exception('id_negocios is not set.  Cannot update stock.');
                 }
@@ -127,22 +127,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
 
                 $pdo->commit(); // Commit transaction
 
-                $_SESSION['success_message'] = "Loss registered successfully.";
+                $_SESSION['success_message'] = __("loss_registered_successfully");
                 header("Location: $URL/almacen/");
                 exit;
             } else {
-               //Not enough stock
-               $errors[] = "Not enough stock available. Current stock: " . ($stock_result ? $stock_result['stock'] : '0');
-               $_SESSION['errors'] = $errors;
-               $_SESSION['form_data'] = $_POST;
-               header("Location: $URL/almacen/");
-               exit;
+                //Not enough stock
+                $errors[] = __("not_enough_stock") . ($stock_result ? $stock_result['stock'] : '0');
+                $_SESSION['errors'] = $errors;
+                $_SESSION['form_data'] = $_POST;
+                header("Location: $URL/almacen/");
+                exit;
 
             }
         } catch (Exception $e) {
             $pdo->rollBack();  // Rollback transaction
             error_log("General Error in create.php: " . $e->getMessage()); // Log detailed error
-            $_SESSION['error_message'] = "An error occurred. Please try again later.";
+            $_SESSION['error_message'] = __("error_generic");
             header("Location: $URL/almacen/");
             exit;
         }

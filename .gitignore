@@ -1,0 +1,19 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración del IDE
+.antigravity/
+.vscode/
+
+# Logs de XAMPP y temporales
+*.log
+tmp/
+
+# Archivos de la base de datos (si hiciste un dump)
+*.sql
+
+# Ignorar basura de la plantilla AdminLTE
+**/AdminLTE-3.2.0/docs/
+**/AdminLTE-3.2.0/build/
+**/AdminLTE-3.2.0/.github/

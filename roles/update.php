@@ -1,12 +1,12 @@
 <?php
-include ('../layout/sesion.php');
+include('../layout/sesion.php');
 
 // ... (código para obtener el ID del negocio si es necesario) ...
 
-include ('../layout/parte1.php');
+include('../layout/parte1.php');
 
 // Incluir el controlador para actualizar roles
-include ('../app/controllers/roles/update_roles.php'); 
+include('../app/controllers/roles/update_roles.php');
 
 // Verificar si $rol está definido antes de usarlo
 if (!isset($rol)) {
@@ -20,7 +20,7 @@ if (!isset($rol)) {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Edición del Rol</h1>
+                    <h1 class="m-0"><?php echo __('role_edition'); ?></h1>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@ if (!isset($rol)) {
                 <div class="col-md-5">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Llene los datos con cuidado</h3>
+                            <h3 class="card-title"><?php echo __('fill_data_carefully'); ?></h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -44,17 +44,21 @@ if (!isset($rol)) {
                             <div class="row">
                                 <div class="col-md-12">
                                     <form action="../app/controllers/roles/update.php" method="post">
-                                        <input type="hidden" name="id_rol" value="<?php echo $id_rol_get;?>">
+                                        <input type="hidden" name="id_rol" value="<?php echo $id_rol_get; ?>">
                                         <div class="form-group">
-                                            <label for="">Nombre del Rol</label>
-                                            <input type="text" name="rol" class="form-control" value="<?php echo $rol;?>" required>
+                                            <label for=""><?php echo __('role_name'); ?></label>
+                                            <input type="text" name="rol" class="form-control"
+                                                value="<?php echo $rol; ?>" required>
                                         </div>
 
 
-                                        <div class="form-group">  <!-- New Permissions Section -->
-                                            <label>Permissions:</label><br>
+                                        <div class="form-group"> <!-- New Permissions Section -->
+                                            <label><?php echo __('permissions'); ?></label><br>
                                             <?php foreach ($all_permissions as $permission): ?>
-                                                <input type="checkbox" name="permissions[]" value="<?php echo $permission; ?>" <?php if (in_array($permission, $current_permissions)) echo 'checked'; ?>> <?php echo $permission; ?><br>
+                                                <input type="checkbox" name="permissions[]"
+                                                    value="<?php echo $permission; ?>" <?php if (in_array($permission, $current_permissions))
+                                                           echo 'checked'; ?>>
+                                                <?php echo __($permission); ?><br>
                                             <?php endforeach; ?>
                                         </div>
 
@@ -62,8 +66,10 @@ if (!isset($rol)) {
 
                                         <hr>
                                         <div class="form-group">
-                                            <a href="index.php" class="btn btn-secondary">Cancelar</a>
-                                            <button type="submit" class="btn btn-success">Actualizar</button>
+                                            <a href="index.php"
+                                                class="btn btn-secondary"><?php echo __('cancel'); ?></a>
+                                            <button type="submit"
+                                                class="btn btn-success"><?php echo __('update'); ?></button>
                                         </div>
                                     </form>
                                 </div>
@@ -76,7 +82,7 @@ if (!isset($rol)) {
     </div>
 </div>
 
-<?php 
-include ('../layout/mensajes.php'); 
-include ('../layout/parte2.php'); 
+<?php
+include('../layout/mensajes.php');
+include('../layout/parte2.php');
 ?>
