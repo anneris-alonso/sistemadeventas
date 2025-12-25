@@ -1,0 +1,4 @@
+.input-group-prepend .input-group-text {
+  border: none; /* Elimina el borde del span */
+}
+

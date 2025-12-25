@@ -1,0 +1,166 @@
+/* messages/style.css (Modified) */
+
+/* Remove full-page styles */
+body {
+    background: none; /* Remove background gradient */
+    display: block; /* Remove flexbox layout */
+    justify-content: initial; /* Remove centering */
+    align-items: initial; /* Remove centering */
+    height: auto; /* Remove fixed height */
+    margin: 0; /* Remove margin */
+    width: 100%; /* Set width to 100% */
+}
+
+/* Chat Container */
+#chat-container {
+    width: 100%; /* Take up full width of sidebar */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: transparent; /* Make the chat container background transparent */
+    padding: 0; /* Remove padding */
+    border-radius: 0; /* Remove border-radius */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between; /* Align items to opposite ends */
+    align-items: center; /* Vertically center items */
+    padding: 10px;
+    background: #ddd;
+    border-bottom: 1px solid #ccc;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+#chat-container h2 {
+    margin: 0;
+}
+
+/* Chat Box */
+#chat-box {
+    flex-grow: 1; /* Allow chat box to take up remaining space */
+    overflow-y: auto; /* Add scrollbar if needed */
+    border: none;
+    padding: 10px;
+    background: transparent; /* Make the chat box background transparent */
+    border-radius: 0; /* Remove border-radius */
+    box-shadow: none; /* Remove box-shadow */
+    min-height: 100px; /* Add a minimum height */
+}
+
+/* User Message */
+.user-message {
+    background: #B6B6B6;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px 0;
+    text-align: right;
+    max-width: 75%;
+    align-self: flex-end;
+}
+
+/* Bot Message */
+.bot-message {
+    background: #3c00ff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px 0;
+    text-align: left;
+    max-width: 75%;
+    align-self: flex-start;
+}
+
+/* Chat Input */
+#user-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+#user-input:focus {
+    border-color: #007bff;
+}
+
+/* Send Button */
+#send-button {
+    padding: 12px 20px;
+    margin-left: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Input Container */
+.input-container {
+    position: fixed;
+    padding: 10px;
+    display: flex;
+    background: transparent; /* Make the input container background transparent */
+    border-top: 1px solid #ccc; /* Add a top border */
+    flex-shrink: 0; /* Prevent shrinking */
+    align-items: center; /* Align items vertically */
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    /*margin-top: auto; Remove this line*/
+}
+
+#microphone-button {
+    padding: 12px 20px;
+    margin-left: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+#microphone-button:hover {
+    color: #0056b3;
+}
+
+/* Recording Class */
+#microphone-button.recording {
+    color: red; /* Change the color to red when recording */
+}
+
+/* Close Iframe Button */
+#close-iframe-button {
+    background: transparent;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#close-iframe-button:hover {
+    color: #0056b3;
+}
+
+/* Smooth Scroll */
+#chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}

@@ -1,0 +1,8 @@
+.main-header.navbar.nav {
+    z-index: 100; /* Ajusta este valor */
+}
+
+/* Para el contenido debajo */
+.contenido-debajo {
+    z-index: 99; /* Asegúrate de que sea menor que el nav */
+}
