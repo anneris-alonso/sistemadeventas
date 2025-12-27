@@ -10,6 +10,15 @@ define('USUARIO', 'root');
 define('PASSWORD', '');
 define('BD', 'sistemadeventas');
 
+// AI Configuration
+//define('AI_API_KEY', 'YOUR_API_KEY_HERE'); // User to replace this
+//define('AI_API_URL', 'https://api.openai.com/v1/chat/completions'); // Default to OpenAI, can be changed
+//define('AI_MODEL', 'gpt-3.5-turbo'); // Cost-effective model for SQL generation
+
+define('AI_API_KEY', 'QkVRcThLeYCmrTuMPGxQWgSHmspUrxGE');
+define('AI_API_URL', 'https://api.mistral.ai/v1/chat/completions');
+define('AI_API_MODEL', 'open-mistral-7b');
+
 $servidor = "mysql:dbname=" . BD . ";host=" . SERVIDOR;
 
 try {
